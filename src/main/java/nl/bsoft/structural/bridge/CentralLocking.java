@@ -13,12 +13,12 @@ public class CentralLocking implements Product {
     }
 
     @Override
-    public String productName() {
-        return productName;
+    public String getProductName() {
+        return this.productName;
     }
 
     @Override
     public void produce() {
-        logger.info("Producing Central Locking System");
+        logger.info("Producing: Central Locking System");
     }
 }

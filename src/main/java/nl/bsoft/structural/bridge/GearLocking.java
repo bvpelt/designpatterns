@@ -13,12 +13,12 @@ public class GearLocking implements Product {
     }
 
     @Override
-    public String productName() {
+    public String getProductName() {
         return productName;
     }
 
     @Override
     public void produce() {
-        logger.info("Producing Gear Locking System");
+        logger.info("Producing: Gear Locking System");
     }
 }

@@ -19,6 +19,15 @@ public abstract class Car {
     public abstract void produceProduct();
 
     public void printDetails() {
-        logger.info("Car: " + carType + ", Product:" + product.productName());
+
+        logger.info("Car: " + this.carType + ", Product:" + this.product.getProductName());
+    }
+
+    public Product getProduct() {
+        return this.product;
+    }
+
+    public String getCarType() {
+        return this.carType;
     }
 }

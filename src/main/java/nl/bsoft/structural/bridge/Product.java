@@ -1,7 +1,7 @@
 package nl.bsoft.structural.bridge;
 
 public interface Product {
-    String productName();
+    String getProductName();
 
     void produce();
 }

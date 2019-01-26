@@ -1,6 +1,6 @@
 package nl.bsoft.structural.bridge;
 
-import nl.bsoft.structural.composite.CompositeTest;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
@@ -15,25 +15,42 @@ public class BridgeTest {
 
     @Test
     public void bridgeTest() {
-        Product product = new CentralLocking("Central Locking System");
-        Product product2 = new GearLocking("Gear Locking System");
-        Car car = new BigWheel(product , "BigWheel xz model");
-        car.produceProduct();
-        car.assemble();
-        car.printDetails();
+        String centralLockingSystem = "Central Locking System";
+        String gearLockingSystem = "Gear Locking System";
+        String bigWheelXzModel = "BigWheel xz model";
+        String motorenLmModel = "Motoren lm model";
 
-        car = new BigWheel(product2 , "BigWheel xz model");
-        car.produceProduct();
-        car.assemble();
-        car.printDetails();
-        car = new Motoren(product, "Motoren lm model");
-        car.produceProduct();
-        car.assemble();
-        car.printDetails();
+        Product product = new CentralLocking(centralLockingSystem);
+        Product product2 = new GearLocking(gearLockingSystem);
+        Assert.assertEquals(product.getProductName(), centralLockingSystem);
+        Assert.assertEquals(product2.getProductName(), gearLockingSystem);
 
-        car = new Motoren(product2, "Motoren lm model");
-        car.produceProduct();
-        car.assemble();
-        car.printDetails();
+        Car bigWheelXzModel01 = new BigWheel(product, bigWheelXzModel);
+        bigWheelXzModel01.produceProduct();
+        bigWheelXzModel01.assemble();
+        bigWheelXzModel01.printDetails();
+        Assert.assertEquals(bigWheelXzModel01.getCarType(), bigWheelXzModel);
+        Assert.assertEquals(bigWheelXzModel01.getProduct().getProductName(), centralLockingSystem);
+
+        Car bigWheelXzModel02 = new BigWheel(product2, bigWheelXzModel);
+        bigWheelXzModel02.produceProduct();
+        bigWheelXzModel02.assemble();
+        bigWheelXzModel02.printDetails();
+        Assert.assertEquals(bigWheelXzModel02.getCarType(), bigWheelXzModel);
+        Assert.assertEquals(bigWheelXzModel02.getProduct().getProductName(), gearLockingSystem);
+
+        Car motorenLmModel01 = new Motoren(product, motorenLmModel);
+        motorenLmModel01.produceProduct();
+        motorenLmModel01.assemble();
+        motorenLmModel01.printDetails();
+        Assert.assertEquals(motorenLmModel01.getCarType(), motorenLmModel);
+        Assert.assertEquals(motorenLmModel01.getProduct().getProductName(), centralLockingSystem);
+
+        Car motorenLmModel02 = new Motoren(product2, motorenLmModel);
+        motorenLmModel02.produceProduct();
+        motorenLmModel02.assemble();
+        motorenLmModel02.printDetails();
+        Assert.assertEquals(motorenLmModel02.getCarType(), motorenLmModel);
+        Assert.assertEquals(motorenLmModel02.getProduct().getProductName(), gearLockingSystem);
     }
 }
