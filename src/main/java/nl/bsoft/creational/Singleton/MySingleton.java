@@ -1,4 +1,4 @@
-package nl.bsoft.structural.Singleton;
+package nl.bsoft.creational.Singleton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,12 +7,9 @@ import java.io.ObjectStreamException;
 
 public class MySingleton {
     private static final Logger logger = LoggerFactory.getLogger(MySingleton.class);
-
-    private String value;
-
     private static final long serialVersionUID = -1093810940935176595L;
-
     private static MySingleton sc = new MySingleton();
+    private String value;
 
     private MySingleton() {
         if (sc != null) {

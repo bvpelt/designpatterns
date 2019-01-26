@@ -1,4 +1,4 @@
-package nl.bsoft.structural.Singleton;
+package nl.bsoft.creational.Singleton;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class SingletonTest {
 
         ClassLoader classLoader = MySingleton.class.getClassLoader();
         try {
-            String className = "nl.bsoft.structural.Singleton.MySingleton";
+            String className = "nl.bsoft.creational.Singleton.MySingleton";
             Class aClass = classLoader.loadClass(className);
             logger.info("aClass.getName() = {}", aClass.getName());
             Assert.assertEquals(className, aClass.getName());

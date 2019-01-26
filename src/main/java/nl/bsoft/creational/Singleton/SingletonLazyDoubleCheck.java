@@ -1,4 +1,4 @@
-package nl.bsoft.structural.Singleton;
+package nl.bsoft.creational.Singleton;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
