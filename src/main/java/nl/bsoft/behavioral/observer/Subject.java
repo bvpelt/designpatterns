@@ -1,4 +1,4 @@
-package nl.bsoft.behavioral;
+package nl.bsoft.behavioral.observer;
 
 public interface Subject {
 

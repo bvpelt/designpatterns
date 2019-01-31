@@ -1,4 +1,4 @@
-package nl.bsoft.behavioral;
+package nl.bsoft.behavioral.observer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

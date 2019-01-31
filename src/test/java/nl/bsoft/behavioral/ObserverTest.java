@@ -1,11 +1,14 @@
 package nl.bsoft.behavioral;
 
 
+import nl.bsoft.behavioral.observer.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import java.util.ArrayList;
 
@@ -48,6 +51,42 @@ public class ObserverTest {
 
         cObject.setDesc("It’s another goal!!");
         cObject.setDesc("Half-time score 2-0");
+
+        logger.info("End   test: {}", name.getMethodName());
+    }
+
+    @Test
+    public void testOldObserver() {
+        logger.info("Start test: {}", name.getMethodName());
+
+        String match01 = "Soccer Match [2014AUG24]";
+        String user01 = "Adam Warner [New York]";
+        String user02 = "Tim Ronney [London]";
+        String user03 = "Marrie [Paris]";
+
+        CommentaryObjectObservable obj = new CommentaryObjectObservable(match01);
+        SMSUsersObserver observer = new SMSUsersObserver(obj, user01);
+        SMSUsersObserver observer2 = new SMSUsersObserver(obj, user02);
+        observer.subscribe();
+        observer2.subscribe();
+        obj.setDesc("Welcome to live Soccer match");
+        obj.setDesc("Current score 0-0");
+        observer.unSubscribe();
+        obj.setDesc("It’s a goal!!");
+        obj.setDesc("Current score 1-0");
+        logger.info("End   test: {}", name.getMethodName());
+    }
+
+    @Test
+    public void testStringObserver() {
+        logger.info("Start test: {}", name.getMethodName());
+        // launch the spring frame work.
+        ApplicationContext ctx = new FileSystemXmlApplicationContext(
+                "classpath:ObserverContext.xml");
+        // grab the Town Crier out of the spring
+        // framework and send a message too all observers
+        TownCrier crier = (TownCrier) ctx.getBean("townCrier");
+        crier.setMessage("It is 1 O'Clock and all is well!");
 
         logger.info("End   test: {}", name.getMethodName());
     }
